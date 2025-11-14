@@ -1,0 +1,6 @@
+1;Ana;ana@correo.com;1200.0
+2;Luis;luis@correo.com;950.0
+3;María;maria@correo.com;1800.0
+4;Carlos;carlos@correo.com;750.0
+5;Elena;elena@correo.com;2100.0
+6;Javier;javier@correo.com;1300.0

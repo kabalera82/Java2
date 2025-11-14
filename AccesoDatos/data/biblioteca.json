@@ -1,0 +1,35 @@
+{
+  "nombre" : "Biblioteca Cher",
+  "usuarios" : [ {
+    "id" : 1,
+    "nombre" : "Cher Rodríguez",
+    "email" : "cher@hotmail.com",
+    "activo" : true
+  }, {
+    "id" : 2,
+    "nombre" : "Paco Rodríguez",
+    "email" : "cher@hotmail.com",
+    "activo" : true
+  }, {
+    "id" : 3,
+    "nombre" : "David Rodríguez",
+    "email" : "cher@hotmail.com",
+    "activo" : true
+  } ],
+  "clientes" : [ {
+    "id" : 1,
+    "nombre" : "Cher Fernández",
+    "telefono" : "666666666",
+    "deuda" : 0.0
+  }, {
+    "id" : 2,
+    "nombre" : "Paco Fernández",
+    "telefono" : "666666666",
+    "deuda" : 12.5
+  }, {
+    "id" : 3,
+    "nombre" : "David Fernández",
+    "telefono" : "666666666",
+    "deuda" : 12000.63
+  } ]
+}

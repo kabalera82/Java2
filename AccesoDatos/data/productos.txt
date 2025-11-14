@@ -1,0 +1,4 @@
+1;Manzana Fuji;2.95;120.0
+2;Plátano de Canarias;3.3;80.0
+3;Pera Conferencia;2.1;60.0
+4;Sandia;2563.36;2.52

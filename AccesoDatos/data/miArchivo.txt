@@ -1,0 +1,3 @@
+¡Hola, este es mi archivo creado desde Java!
+ Puedes escribir lo que quieras.
+ Marcos Mola Mazo.

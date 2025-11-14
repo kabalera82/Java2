@@ -46,7 +46,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente[" +
+        return "ejercicio06json.ejercicio06json.src.main.Cliente[" +
                 " id= " + id +
                 ", nombre= '" + nombre + '\'' +
                 ", email= '" + email + '\'' +

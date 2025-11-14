@@ -1,0 +1,40 @@
+asdf : El t�rmino 'asdf' no se reconoce como nombre de un cmdlet, funci�n, archivo de script o programa ejecutable. 
+Compruebe si escribi� correctamente el nombre o, si incluy� una ruta de acceso, compruebe que dicha ruta es correcta e 
+int�ntelo de nuevo.
+En l�nea: 1 Car�cter: 1
++ asdf
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (asdf:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+asdf : El t�rmino 'asdf' no se reconoce como nombre de un cmdlet, funci�n, archivo de script o programa ejecutable. 
+Compruebe si escribi� correctamente el nombre o, si incluy� una ruta de acceso, compruebe que dicha ruta es correcta e 
+int�ntelo de nuevo.
+En l�nea: 1 Car�cter: 1
++ asdf
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (asdf:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+asdf : El t�rmino 'asdf' no se reconoce como nombre de un cmdlet, funci�n, archivo de script o programa ejecutable. 
+Compruebe si escribi� correctamente el nombre o, si incluy� una ruta de acceso, compruebe que dicha ruta es correcta e 
+int�ntelo de nuevo.
+En l�nea: 1 Car�cter: 1
++ asdf
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (asdf:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+asdf : El t�rmino 'asdf' no se reconoce como nombre de un cmdlet, funci�n, archivo de script o programa ejecutable. 
+Compruebe si escribi� correctamente el nombre o, si incluy� una ruta de acceso, compruebe que dicha ruta es correcta e 
+int�ntelo de nuevo.
+En l�nea: 1 Car�cter: 1
++ asdf
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (asdf:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+asdf : El t�rmino 'asdf' no se reconoce como nombre de un cmdlet, funci�n, archivo de script o programa ejecutable. 
+Compruebe si escribi� correctamente el nombre o, si incluy� una ruta de acceso, compruebe que dicha ruta es correcta e 
+int�ntelo de nuevo.
+En l�nea: 1 Car�cter: 1
++ asdf
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (asdf:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
