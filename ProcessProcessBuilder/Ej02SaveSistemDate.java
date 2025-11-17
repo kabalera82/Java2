@@ -12,7 +12,7 @@ public class Ej02SaveSistemDate {
 
     // Ruta absoluta donde se guardará la fecha y la hora
     private static final Path RUTA = Path.of(
-            "F:/Marcos/Programacion/Java/Java2/Process&ProcessBuilder/data/fecha.txt"
+            "F:/Marcos/Programacion/Java/Java2/ProcessProcessBuilder/data/fecha.txt"
     );
 
     public static void main(String[] args) {

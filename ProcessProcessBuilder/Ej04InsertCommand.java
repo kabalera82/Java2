@@ -2,24 +2,34 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
-public class Ej03LogErrores {
+import java.util.Scanner;
 
     /*
-    Crea un programa que intente ejecutar un comando inexistente y redirija los mensajes de
-    error a un archivo llamado errores.txt.
+    Haz que el programa pida al usuario un comando del sistema, lo ejecute y guarde tanto la
+    salida como los errores en el archivo resultado.txt.
     */
 
+public class Ej04InsertCommand {
 
     // RUTA Absoluta
     private static final Path RUTA = Path.of(
-            "F:/Marcos/Programacion/Java/Java2/Process&ProcessBuilder/data/errores.txt"
+            "F:/Marcos/Programacion/Java/Java2/ProcessProcessBuilder/data/errores.txt"
     );
-
+    // RUTA Absoluta
+    private static final Path RUTA2 = Path.of(
+            "F:/Marcos/Programacion/Java/Java2/ProcessProcessBuilder/data/comandos.txt"
+    );
 
     public static void main(String[] args) {
 
+        System.out.println("Inserte un comando:");
+        Scanner sc = new Scanner(System.in);
+        String comando = sc.nextLine();
+        insertCommand(comando);
+    }
 
+
+    private static void insertCommand (String comando) {
         try{
 
             // Comando inexistente → generará error
@@ -60,10 +70,20 @@ public class Ej03LogErrores {
             // Esperar a que termine
             p.waitFor();
 
+            // (Opcional) Mostrar salida normal en consola
+            String out;
+            while ((out = salida.readLine()) != null) {
+                System.out.println("[SALIDA] " + out);
+            }
+
             System.out.println("Errores guardados correctamente en " + RUTA.toAbsolutePath());
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-}
+
+    }
+
+
+
