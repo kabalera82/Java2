@@ -7,6 +7,7 @@ import java.io.File;
 
 public class Ej10SaveErrors {
 
+
     public static void main(String[] args) {
         ejecutarComando();
     }
@@ -14,6 +15,7 @@ public class Ej10SaveErrors {
     public static void ejecutarComando() {
 
         try {
+
 
             // Creamos el ProcessBuilder
             ProcessBuilder pb = new ProcessBuilder("cmd", "/c", "dir /xyz");

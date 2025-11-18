@@ -18,28 +18,19 @@ public class Ej01MostrarDirectorioActual {
             Process proceso = pb.start();
 
             // Preparamos un escritor para enviar comandos al CMD
-            BufferedWriter escritor = new BufferedWriter(
-                    new OutputStreamWriter(proceso.getOutputStream())
-            );
+            BufferedReader br = new BufferedReader(new InputStreamReader(proceso.getInputStream()));
 
-            // Enviamos el comando al CMD
-            escritor.write("Vamos a ejecutar en cmd el dir\n");
-            escritor.flush();
-
-            // Lector para recibir la salida
-
-            BufferedReader lector = new BufferedReader(
-              new InputStreamReader(proceso.getInputStream())
-            );
-
-            // Muestra en pantalla lo que devuelve el CMD
-            String linea;
-            while((linea = lector.readLine()) != null){
-                System.out.println(linea);
+            // Mostramos solo la primera línea
+            String primeraLinea = br.readLine();
+            if (primeraLinea != null) {
+                System.out.println("Primera línea de salida:");
+                System.out.println(primeraLinea);
+            } else {
+                System.out.println("No se ha producido ninguna salida.");
             }
 
+            proceso.waitFor();
         } catch (Exception e) {
-            // Muestra información del error si algo falla
             e.printStackTrace();
         }
     }
