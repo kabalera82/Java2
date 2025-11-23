@@ -56,4 +56,7 @@ public class Ej07LlamadaArchivo {
             e.printStackTrace();
         }
     }
+
+    public static class Ej16ProcesoConVariable {
+    }
 }
