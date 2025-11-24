@@ -1,55 +1,45 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Ej14EjecutarComando {
 
     /*
-    Ejercicio 14 – Clase utilitaria
-    Crea una clase llamada ComandoUtils con un método estático ejecutar(String comando)
-    que devuelva la salida del comando como un String.
+     * Ejercicio 14 – Clase utilitaria
+     * Crea un método estático ejecutar(String comando)
+     * que devuelva la salida del comando como un String.
      */
 
     public static void main(String[] args) {
-
-        ejecutar();
-
+        String salida = ejecutar("dir");  // ejemplo
+        System.out.println(salida);
     }
 
+    public static String ejecutar(String comando) {
+        StringBuilder salida = new StringBuilder();
 
-    public static String ejecutar() {
+        try {
+            // Ejecuta el comando en Windows
+            ProcessBuilder pb = new ProcessBuilder("cmd", "/c", comando);
+            pb.redirectErrorStream(true);
 
+            Process proceso = pb.start();
 
-            try {
-                // Crea un proceso del sistema operativo:
-                // "cmd /c dir" → ejecuta el comando DIR en Windows
-                ProcessBuilder pb = new ProcessBuilder("cmd", "/c", "dir");
+            try (BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(proceso.getInputStream()))) {
 
-                // Arranca el proceso
-                Process proceso = pb.start();
-
-                // Prepara un lector para recoger la salida del proceso (lo que imprime DIR)
-                BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(proceso.getInputStream())
-                );
-
-                // Lee línea a línea la salida del proceso y la muestra por consola
-                String resultado = "";
-                String acumulador = "";
                 String linea;
                 while ((linea = reader.readLine()) != null) {
-                    resultado += linea;
+                    salida.append(linea).append(System.lineSeparator());
                 }
-
-
-                // Espera a que el proceso termine y captura el código de salida
-                int exitCode = proceso.waitFor();
-                System.out.println(resultado);
-
-            } catch (Exception e) {
-                // Muestra información del error si algo falla
-                e.printStackTrace();
             }
-        return resultado;
 
+            proceso.waitFor();
+
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException("Error al ejecutar el comando: " + comando, e);
+        }
+
+        return salida.toString();
     }
 }
