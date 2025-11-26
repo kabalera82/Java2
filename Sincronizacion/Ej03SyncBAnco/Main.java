@@ -36,20 +36,25 @@ import Ej03SyncBAnco.CuentaBancaria;
 
 
 
+// Clase principal que crea la cuenta y los tres hilos-cajero
 public class Main {
     public static void main(String[] args) {
 
-
+        // Creamos una cuenta bancaria con saldo inicial de 1000 euros
         CuentaBancaria cuenta = new CuentaBancaria(1000);
 
+        // Creamos tres hilos que usarán la MISMA cuenta bancaria
+        // Cada hilo ejecuta un nuevo objeto Cajero asociado a esa cuenta
         Thread t1 = new Thread(new Cajero(cuenta), "cajer - 1");
         Thread t2 = new Thread(new Cajero(cuenta), "cajer - 2");
         Thread t3 = new Thread(new Cajero(cuenta), "cajer - 3");
 
+        // Iniciamos la ejecución concurrente de los tres cajeros
         t1.start();
         t2.start();
         t3.start();
 
-
+        // (Opcionalmente podrías usar join() para esperar a que terminen,
+        // pero tu código actual simplemente los lanza y deja que terminen solos)
     }
 }

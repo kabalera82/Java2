@@ -10,11 +10,14 @@
     import java.io.*;
     import java.nio.charset.StandardCharsets;
     import java.nio.file.Files;
+    import java.nio.file.Path;
+    import java.nio.file.Paths;
 
     public class Ej15CopiaSeg {
-
+        public static final Path RUTA = Paths.get("data/CopiaSeguridad.txt");
 
     public static void main(String[] args) {
+
     ejecutar();
     }
 

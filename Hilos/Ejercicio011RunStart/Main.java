@@ -14,7 +14,12 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Hilos h1 = new Hilos(); // Creamos la TAREA (Runnable)
 
+        Thread hilo1 = new Thread(h1);
+
+        hilo1.run(); // Ejecuta el codigo en el hilo actual
+        hilo1.start(); // pone en marcha otro hilo
 
 
     }

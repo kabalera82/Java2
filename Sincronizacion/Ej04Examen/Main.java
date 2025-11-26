@@ -50,15 +50,20 @@ package Ej04Examen;
 */
 
 
+// Clase principal que prepara el caldero y lanza los hilos de los alumnos
 public class Main {
 
     public static void main(String[] args) {
+        // Se crea un único caldero compartido
         Caldero caldero = new Caldero();
+
+        // Se crean 4 hilos, cada uno con un alumno diferente
         Thread t1 = new Thread(new Alumno(caldero,"Harry"));
         Thread t2 = new Thread(new Alumno(caldero, "Hermione"));
         Thread t3 = new Thread(new Alumno(caldero, "Ron"));
         Thread t4 = new Thread(new Alumno(caldero, "Draco"));
 
+        // Se inician los 4 hilos (los alumnos empiezan a añadir ingredientes)
         t1.start();
         t2.start();
         t3.start();
@@ -66,14 +71,17 @@ public class Main {
 
 
         try {
+            // El hilo principal espera a que terminen los 4 alumnos
             t1.join();
             t2.join();
             t3.join();
             t4.join();
         } catch (InterruptedException e) {
+            // Si se interrumpe mientras espera, lanza RuntimeException
             throw new RuntimeException(e);
         }
 
+        // Al final, mostramos cuántos ingredientes totales hay en el caldero
         System.out.println("Ingredientes finales en el caldero: "+caldero.getNivelIngredientes());
 
     }
