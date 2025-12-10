@@ -1,0 +1,90 @@
+package Ej05;
+
+public class Main {
+    public static void main(String[] args) {
+
+        // -------------------------------------------------------------
+        // PROBLEMAS HABITUALES EN PROGRAMACIÓN CONCURRENTE
+        // -------------------------------------------------------------
+
+        // Condiciones de carrera (Race Conditions)
+        // Ocurren cuando varios hilos acceden y modifican un recurso compartido al mismo tiempo.
+        // El resultado depende del orden aleatorio en que se ejecutan los hilos → resultados impredecibles.
+
+        // Inconsistencia de datos
+        // Consecuencia típica de las race conditions.
+        // Ejemplo: dos hilos leen 10, ambos suman 1, ambos escriben 11 → se perdió una actualización.
+
+        // Lectura y escritura intercalada
+        // Un hilo puede leer un dato mientras otro aún no ha terminado de actualizarlo.
+        // Esto provoca estados inconsistentes y errores difíciles de detectar.
+
+        // Problemas de rendimiento
+        // Crear muchos hilos provoca más cambios de contexto → más trabajo para la CPU.
+        // Usar synchronized en exceso genera cuellos de botella (solo un hilo a la vez).
+
+        // Los hilos NO se ejecutan en el orden que tú quieras
+        // El planificador del SO decide el orden. No puedes asumir nada sin sincronización.
+
+        // Interbloqueos (Deadlocks)
+        // Ocurre cuando dos o más hilos se quedan esperando uno por el recurso del otro.
+        // Ninguno avanza → el programa se queda congelado.
+
+
+        // -------------------------------------------------------------
+        // Synchronized y zona crítica
+        // -------------------------------------------------------------
+
+        // synchronized → crea un "lock" sobre un objeto o clase.
+        // Evita que dos hilos entren a la vez en la misma zona crítica.
+        // Zona crítica → bloque de código que accede a un recurso compartido.
+
+
+        // -------------------------------------------------------------
+        // FORMAS DE USAR synchronized
+        // -------------------------------------------------------------
+
+        /**
+         * Forma 1: Método sincronizado (instancia)
+         *
+         * public synchronized void incrementar() {
+         *     contador++;
+         * }
+         *
+         * - Bloquea la instancia (this).
+         * - Solo un hilo puede ejecutar este método a la vez.
+         */
+
+
+        /**
+         * Forma 2: Bloque sincronizado
+         *
+         * public void incrementar() {
+         *     synchronized (this) {
+         *         contador++;
+         *     }
+         * }
+         *
+         * - Permite sincronizar solo una parte concreta del código.
+         * - Se usa cuando no quieres bloquear todo el método.
+         */
+
+
+        /**
+         * Forma 3: Método estático sincronizado
+         *
+         * public static synchronized void log(String mensaje) {
+         *     System.out.println(mensaje);
+         * }
+         *
+         * - Bloquea la *clase* completa, no el objeto.
+         * - Todos los hilos que llamen a este método comparten el MISMO lock.
+         * - Útil para recursos globales (ficheros, logs, conexión única…).
+         */
+
+         /**
+         *
+
+
+    }
+}

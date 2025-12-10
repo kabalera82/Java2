@@ -11,7 +11,7 @@ public class EjemploRunnable implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Estoy en un Runnable: " +
+        System.out.println("Estoy en un Ejecutable: " +
                 Thread.currentThread().getName());
     }
 }

@@ -1,0 +1,211 @@
+/*
+========================================================================================================================
+HILOS EN JAVA – ESQUEMA RESUMEN (DOCENTE / DAM)
+========================================================================================================================
+
+1. ¿QUÉ ES UN HILO?
+------------------------------------------------------------------------------------------------------------------------
+- Un hilo (Thread) es un camino de ejecución dentro de un mismo proceso.
+- Un proceso puede tener varios hilos ejecutándose (a la vez o intercalados).
+- Los hilos de un proceso comparten memoria y recursos (objetos, ficheros, BD…).
+- El hilo principal es el que ejecuta el método main(String[] args).
+
+2. USOS DE LOS HILOS Y CUÁNDO USAR CADA FORMA
+
+🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+🔥 1️⃣ CUÁNDO USAR implements Runnable (LA OPCIÓN CORRECTA EL 95% DE LAS VECES)
+🔥   👉 Cuando tu clase ya hereda de otra (porque Java solo permite UNA herencia).
+🔥   👉 Cuando quieres separar la lógica del hilo de la gestión del hilo.
+🔥   👉 Cuando quieres reutilizar el mismo Runnable en varios Threads.
+🔥   👉 Cuando sigues buenas prácticas de Java (lo profesional).
+🔥
+🔥 2️⃣ CUÁNDO USAR extends Thread
+🔥
+🔥  👉 Solo cuando NECESITAS modificar el propio comportamiento del hilo.
+🔥  👉 Cuando quieres crear una subclase REAL de Thread.
+🔥  👉 Cuando quieres añadir funcionalidad al hilo mismo, no a la tarea.
+🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+
+2.1 Usos generales de los hilos
+- Ejecutar tareas en paralelo:
+  - Descargar archivos mientras la UI responde.
+  - Consultar BBDD sin bloquear la aplicación.
+  - Procesar muchas peticiones en un servidor.
+- Aprovechar varios núcleos de CPU.
+- Mantener la aplicación fluida (trabajo pesado en segundo plano).
+
+2.2 Cuándo usar cada “forma” de trabajar con hilos
+- extends Thread
+  - Para ejemplos simples y prácticas introductorias.
+  - Cuando solo necesitas ver cómo arranca un hilo y qué hace run().
+  - No se recomienda en proyectos grandes.
+
+- implements Runnable (o lambda)
+  - Tareas en segundo plano que NO devuelven un valor.
+  - Quieres separar la lógica de la tarea del mecanismo de ejecución.
+  - Recomendado para código normal: Runnable + Thread o Runnable + ExecutorService.
+
+- Callable<V> + Future<V>
+  - Tareas en segundo plano que SÍ deben devolver un resultado.
+  - Consultas a BBDD, cálculos pesados, llamadas a APIs donde necesitas la respuesta.
+  - Permite saber si la tarea terminó y recoger el resultado más tarde.
+
+- ExecutorService (pools de hilos)
+  - Cuando tienes muchas tareas o una app “seria” (servidores, servicios, procesos largos).
+  - En vez de crear hilos uno a uno, envías tareas a un pool que los gestiona.
+  - Forma profesional de gestionar concurrencia en Java.
+
+3. CÓMO USAR LOS HILOS (PATRONES BÁSICOS)
+------------------------------------------------------------------------------------------------------------------------
+
+// 3.1. Extender Thread (forma básica)----------------------------------------------------------------------------------
+class MiHilo extends Thread {
+    @Override
+    public void run() {
+        System.out.println("Hola desde un hilo");
+    }
+}
+
+public class EjemploThread {
+    public static void main(String[] args) {
+        Thread hilo = new MiHilo();
+        hilo.start(); // crea un hilo nuevo y ejecuta run()
+    }
+}
+
+// 3.2. Runnable + Thread (forma recomendada sin resultado)-------------------------------------------------------------
+class MiTarea implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Tarea en segundo plano");
+    }
+}
+
+public class EjemploRunnable {
+    public static void main(String[] args) {
+        Runnable tarea = new MiTarea();
+        new Thread(tarea).start();
+    }
+}
+
+// 3.3. Callable + Future (tarea con resultado)-------------------------------------------------------------------------
+import java.util.concurrent.*;
+
+class SumaCallable implements Callable<Integer> {
+    @Override
+    public Integer call() {
+        int suma = 0;
+        for (int i = 0; i < 100; i++) suma += i;
+        return suma;
+    }
+}
+
+public class EjemploCallable {
+    public static void main(String[] args) throws Exception {
+        ExecutorService pool = Executors.newSingleThreadExecutor();
+        Future<Integer> future = pool.submit(new SumaCallable());
+        Integer resultado = future.get(); // espera y recoge el resultado
+        System.out.println("Resultado = " + resultado);
+        pool.shutdown();
+    }
+}
+
+// 3.4. ExecutorService con Runnable (muchas tareas)--------------------------------------------------------------------
+import java.util.concurrent.*;
+
+public class EjemploExecutor {
+    public static void main(String[] args) throws InterruptedException {
+        ExecutorService pool = Executors.newFixedThreadPool(4);
+
+        for (int i = 0; i < 10; i++) {
+            int id = i;
+            pool.submit(() -> {
+                System.out.println("Tarea " + id +
+                    " en " + Thread.currentThread().getName());
+            });
+        }
+
+        pool.shutdown();
+        pool.awaitTermination(1, TimeUnit.MINUTES);
+    }
+}
+
+4. MÉTODOS COMUNES DE LA CLASE THREAD
+------------------------------------------------------------------------------------------------------------------------
+- start()
+  - Arranca el hilo y llama internamente a run() en un hilo nuevo.
+- run()
+  - Código que ejecutará el hilo (NO crea concurrencia si lo llamas directo).
+- sleep(long ms)
+  - Pausa el hilo actual durante ms milisegundos.
+- join()
+  - El hilo actual espera a que otro hilo termine.
+- interrupt()
+  - Señala a un hilo para que se detenga de forma cooperativa.
+- isInterrupted()
+  - Comprueba si el hilo ha sido interrumpido.
+- currentThread()
+  - Devuelve una referencia al hilo que está ejecutando el código.
+- setName(String) / getName()
+  - Cambia / obtiene el nombre del hilo.
+- setPriority(int)
+  - Cambia la prioridad (se usa poco en código moderno).
+
+5. CICLO DE VIDA DE LOS HILOS
+------------------------------------------------------------------------------------------------------------------------
+- NEW
+  - new Thread(...) creado pero no iniciado.
+- RUNNABLE
+  - Después de start(), está listo para ejecutarse.
+- RUNNING
+  - El sistema operativo le da tiempo de CPU.
+- BLOCKED / WAITING / TIMED_WAITING
+  - Esperando un recurso, un bloqueo, sleep(), join(), etc.
+- TERMINATED
+  - El método run() ha terminado y el hilo muere.
+
+6. PROBLEMAS TÍPICOS CON HILOS
+------------------------------------------------------------------------------------------------------------------------
+- Race conditions (condiciones de carrera)
+  - Varios hilos modifican el mismo dato sin control.
+  - Resultado depende del orden de ejecución → resultados aleatorios.
+- Inconsistencia de datos
+  - Estados “imposibles” o incoherentes por accesos concurrentes mal gestionados.
+- Deadlocks (interbloqueos)
+  - Dos o más hilos se quedan esperando recursos entre sí y nadie avanza.
+- Starvation
+  - Un hilo nunca consigue CPU o recursos porque otros acaparan.
+- Livelock
+  - Los hilos cambian de estado continuamente, pero ninguno progresa.
+
+7. SINCRONIZACIÓN
+------------------------------------------------------------------------------------------------------------------------
+- synchronized
+  - En métodos:
+        public synchronized void metodo() { ... }
+  - En bloques:
+        synchronized (candado) { ... }
+  - Evita accesos simultáneos a secciones críticas.
+- volatile
+  - Garantiza visibilidad de una variable entre hilos (lecturas/escrituras se ven).
+  - No garantiza atomicidad por sí solo.
+- Clases atómicas (java.util.concurrent.atomic)
+  - AtomicInteger, AtomicBoolean, etc.
+  - Operaciones atómicas sin bloquear todo el objeto.
+- Locks (java.util.concurrent.locks)
+  - ReentrantLock, ReadWriteLock…
+  - Más flexibles que synchronized (lock()/unlock()).
+- wait(), notify(), notifyAll()
+  - Coordinación de hilos sobre un mismo monitor (uso avanzado).
+
+8. BUENAS PRÁCTICAS
+------------------------------------------------------------------------------------------------------------------------
+- Preferir ExecutorService y pools de hilos frente a crear muchos Thread a mano.
+- Mantener las tareas simples y lo más independientes posible.
+- Evitar compartir estado mutable; si es necesario, sincronizar claramente.
+- Manejar correctamente las interrupciones (no ignorar InterruptedException).
+- No abusar de sleep() como mecanismo de sincronización.
+- Documentar qué código es “thread-safe” y qué no.
+- Probar y depurar pensando en ejecución concurrente (errores pueden ser aleatorios).
+*/
