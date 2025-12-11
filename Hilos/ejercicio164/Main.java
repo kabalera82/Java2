@@ -34,37 +34,57 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Hilo1 h1 = new Hilo1();
-        Hilo1 h2 = new Hilo1();
+        // Creamos dos hilos del mismo tipo
+        Hilo1 h1 = new Hilo1();   // Hilo A
+        Hilo1 h2 = new Hilo1();   // Hilo B
 
+        // Imprime el nombre del hilo actual (main)
         System.out.println(Thread.currentThread().getName());
+
+        // Arrancamos el hilo h1 (A)
         h1.start();
+
+        // El hilo main sigue ejecutándose inmediatamente
         System.out.println(Thread.currentThread().getName());
+
         try {
+            // Antes del join, sigue estando en el hilo main
             System.out.println(Thread.currentThread().getName());
+
+            // main se BLOQUEA hasta que h1 termine
             h1.join();
+
+            // Cuando h1 acaba, main vuelve a ejecutarse
             System.out.println(Thread.currentThread().getName());
+
+            // Ahora arrancamos h2 SOLO cuando h1 ya ha terminado
             h2.start();
+
+            // Esperamos también a que h2 termine
             h2.join();
+
+            // Cuando h2 acaba, seguimos ejecutando main
             System.out.println(Thread.currentThread().getName());
+
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     public static class Hilo1 extends Thread {
+
         @Override
         public void run() {
             try {
-                System.out.println("Ejecutandose" + Thread.currentThread().getName());
+                // Indica que el hilo está empezando
+                System.out.println("Ejecutándose " + Thread.currentThread().getName());
+
+                // Simula trabajo del hilo → 3 segundos
                 Thread.sleep(3000);
+
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
-
     }
-
 }
