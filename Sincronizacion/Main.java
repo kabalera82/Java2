@@ -99,7 +99,7 @@ public class Main {
 
     Ventajas:
       - Gestiona el número de hilos de forma eficiente (reutiliza hilos).
-      - Facilita el control del ciclo de vida de los hilos (inicio, finalización, cierre).
+      - Facilita el db del ciclo de vida de los hilos (inicio, finalización, cierre).
       - Es el enfoque más usado en aplicaciones reales con mucha concurrencia.
 
     Desventajas:
@@ -109,7 +109,7 @@ public class Main {
     Cuándo usarlo:<-------------------------------------------------------------------------------------------
       - En aplicaciones medianas o grandes.
       - Cuando hay muchas tareas cortas o repetitivas.
-      - Cuando quieres un control fino del rendimiento y de los recursos.
+      - Cuando quieres un db fino del rendimiento y de los recursos.
 
 
     RESUMEN DE CUÁNDO USAR CADA UNO
@@ -288,7 +288,7 @@ public class Main {
       - Mismo candado (this), PERO:
           * Solo sincronizas una parte del método, no todo.
           * El código fuera del bloque synchronized no queda bloqueado.
-      - Esto da un control más fino (mejor rendimiento si la zona crítica
+      - Esto da un db más fino (mejor rendimiento si la zona crítica
         es pequeña y el método hace más cosas).
 
     Idea:

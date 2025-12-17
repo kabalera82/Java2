@@ -168,7 +168,7 @@ public class EjemploExecutor {
 6. PROBLEMAS TÍPICOS CON HILOS
 ------------------------------------------------------------------------------------------------------------------------
 - Race conditions (condiciones de carrera)
-  - Varios hilos modifican el mismo dato sin control.
+  - Varios hilos modifican el mismo dato sin db.
   - Resultado depende del orden de ejecución → resultados aleatorios.
 - Inconsistencia de datos
   - Estados “imposibles” o incoherentes por accesos concurrentes mal gestionados.
