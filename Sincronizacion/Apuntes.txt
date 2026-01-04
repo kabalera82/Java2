@@ -1,4 +1,4 @@
-package Ej05;
+package ejercicio05Ticket;
 
 public class Main {
     public static void main(String[] args) {
