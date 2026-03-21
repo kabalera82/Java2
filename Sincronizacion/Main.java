@@ -2,6 +2,67 @@ public class Main {
 
     public static void main(String[] args) {
 
+
+        /**
+         * EJERCICIO — Impresora compartida (1 recurso crítico real)
+         * objetivo: sección crítica bien delimitada
+         * Contexto
+         * 5 empleados comparten 1 impresora.
+         * Reglas
+         * Cada uno:
+         * Trabaja (tiempo aleatorio).
+         * Envía documento.
+         * Imprime (tiempo aleatorio).
+         * Solo un documento imprime a la vez.
+         * Debes lograr
+         * Que nadie “se meta” a mitad de impresión.
+         * Que los mensajes reflejen el orden real.
+         * Comprobación
+         * Nunca hay 2 impresiones simultáneas.
+         */
+
+        /**
+         * EJERCICIO — Dos impresoras (primer contacto directo)
+         * objetivo: varios recursos + espera ordenada
+         * Contexto
+         * Oficina con 2 impresoras, 6 empleados.
+         * Reglas
+         * Si hay impresora libre → usarla.
+         * Si no → esperar.
+         * Al terminar → liberar.
+         * Debes lograr
+         * Controlar lista / contador de impresoras.
+         * Evitar que dos usen la misma.
+         * Usar notificación cuando se libera.
+         * Comprobación
+         * Nunca se repite la misma impresora a la vez.
+         */
+
+        /**
+         * 🟩 EJERCICIO 8 — ⭐ CENTRO DE COPIAS (EJERCICIO FINAL)
+         * 👉 objetivo: juntar TODO
+         * Contexto
+         * 5 estudiantes.
+         * 2 máquinas de copias.
+         * Cada estudiante:
+         * Estudia (tiempo aleatorio)
+         * Pide máquina
+         * Copia (tiempo aleatorio)
+         * Libera
+         * Repite
+         * Programa dura 20 s.
+         * Debes lograr
+         * Clase central CentroCopias.
+         * Gestión sincronizada del recurso.
+         * wait() si no hay máquinas libres.
+         * notify / notifyAll() al liberar.
+         * Contar cuántas veces copia cada estudiante.
+         * Final limpio.
+         * Comprobación
+         * Nunca dos estudiantes usan la misma máquina.
+         * No hay bloqueos
+         * Salida clara.
+         */
 /*
     HILOS EN JAVA: TIPOS PRINCIPALES Y CUÁNDO USARLOS
     =================================================

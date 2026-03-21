@@ -8,7 +8,7 @@ HILOS EN JAVA – ESQUEMA RESUMEN (DOCENTE / DAM)
 - Un hilo (Thread) es un camino de ejecución dentro de un mismo proceso.
 - Un proceso puede tener varios hilos ejecutándose (a la vez o intercalados).
 - Los hilos de un proceso comparten memoria y recursos (objetos, ficheros, BD…).
-- El hilo principal es el que ejecuta el método main(String[] args).
+- El hilo principal es el que ejecuta el método FizzBuzz(String[] args).
 
 2. USOS DE LOS HILOS Y CUÁNDO USAR CADA FORMA
 
@@ -68,7 +68,7 @@ class MiHilo extends Thread {
 }
 
 public class EjemploThread {
-    public static void main(String[] args) {
+    public static void FizzBuzz(String[] args) {
         Thread hilo = new MiHilo();
         hilo.start(); // crea un hilo nuevo y ejecuta run()
     }
@@ -83,7 +83,7 @@ class MiTarea implements Runnable {
 }
 
 public class EjemploRunnable {
-    public static void main(String[] args) {
+    public static void FizzBuzz(String[] args) {
         Runnable tarea = new MiTarea();
         new Thread(tarea).start();
     }
@@ -102,7 +102,7 @@ class SumaCallable implements Callable<Integer> {
 }
 
 public class EjemploCallable {
-    public static void main(String[] args) throws Exception {
+    public static void FizzBuzz(String[] args) throws Exception {
         ExecutorService pool = Executors.newSingleThreadExecutor();
         Future<Integer> future = pool.submit(new SumaCallable());
         Integer resultado = future.get(); // espera y recoge el resultado
@@ -115,7 +115,7 @@ public class EjemploCallable {
 import java.util.concurrent.*;
 
 public class EjemploExecutor {
-    public static void main(String[] args) throws InterruptedException {
+    public static void FizzBuzz(String[] args) throws InterruptedException {
         ExecutorService pool = Executors.newFixedThreadPool(4);
 
         for (int i = 0; i < 10; i++) {

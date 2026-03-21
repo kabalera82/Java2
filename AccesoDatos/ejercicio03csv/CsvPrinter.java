@@ -5,7 +5,7 @@ import java.util.Map;
 // Se importan las clases necesarias para manejar listas (List) y mapas (Map).
 
 /**
- * 💡 Clase que imprime por pantalla el contenido de una tabla CSV (CsvTable).
+ * 💡Clase que imprime por pantalla el contenido de una tabla CSV (CsvTable).
  *
  * Esta versión es más simple: imprime las columnas alineadas
  * pero sin bordes ni líneas separadoras (solo espacios).
@@ -13,7 +13,7 @@ import java.util.Map;
 public class CsvPrinter {
 
     // -------------------------------------------------------
-    //  CONSTRUCTOR PRIVADO
+    //  CONSTRUCTOR PRIVADO - - - -
     // -------------------------------------------------------
 
     private CsvPrinter() {}

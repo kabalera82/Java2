@@ -21,6 +21,7 @@ public class LectorCsv {
     public static void main(String[] args) {
         // 1) Asegurar que el directorio donde debería estar el CSV existe.
         //    Si no existe, se crea (createDirectories no falla si ya existe).
+
         try {
             Files.createDirectories(RUTA.getParent()); // 'data/'
         } catch (IOException e) {
