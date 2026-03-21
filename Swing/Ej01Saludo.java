@@ -29,7 +29,7 @@ public class Ej01Saludo {
         ventana.setSize(600,400);
         ventana.getContentPane().setBackground(new Color(50,220,220, 255)); // Hay que pintar el contenido
         ventana.add(usandoJLabel(), BorderLayout.CENTER); // añadir el JLabel y ocupa la zona central del JFrame3
-        ventana.setLayout(null); //sino el boton se pone done le sale de los huevos
+        ventana.setLayout(null); // null layout: posicionamiento absoluto con setBounds(x, y, ancho, alto)
         ventana.add(usandoJButton());
         ventana.add(insertaTexto());
         // cruz de cierre

@@ -7,8 +7,4 @@ public class MiHilo extends Thread {
     public void run(){
         System.out.println("Estoy en el hilo " + Thread.currentThread().getName());
     }
-
-    EjemploRunnable er = new EjemploRunnable();
-
-
 }
