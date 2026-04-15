@@ -65,7 +65,7 @@ Los ejercicios estan organizados en **dos bloques**:
 | `Ejercicio04SetPriority/` | `setPriority()` | Muestra que la prioridad influye pero no garantiza orden de ejecucion |
 | `Ejercicio05IsAlive/` | `isAlive()` | Consultar el estado de un hilo durante su ejecucion |
 | `Ejercicio06Carrera/` | Carrera de hilos | Varios hilos compiten — demuestra el no-determinismo |
-| `Ejercicio07Semaforo/` | Semaforo manual | Control de acceso con `wait()`/`notify()` — paso previo a `Semaphore` |
+| `Ejercicio07Semaforo/` | Hilo manual | Control de acceso con `wait()`/`notify()` — paso previo a `Semaphore` |
 | `Ejercicio08TresHilosOrden/` | Coordinacion de 3 hilos | Forzar que 3 hilos se ejecuten en un orden concreto con `join()` |
 
 ### Bloque B — Serie 13-22 (ejercicios avanzados numerados)
@@ -80,7 +80,7 @@ Los ejercicios estan organizados en **dos bloques**:
 | `ejercicio186/` | Ejercicio 18.6 | Carrera con `Runnable` |
 | `ejercicio197/` | Ejercicio 19.7 | `join()` en cadena |
 | `ejercicio208/` | Ejercicio 20.8 | Hilos pares e impares intercalados |
-| `ejercicio219/` | Ejercicio 21.9 | Semaforo con `Semaphore` de Java |
+| `ejercicio219/` | Ejercicio 21.9 | Hilo con `Semaphore` de Java |
 | `ejercicio2110/` | Ejercicio 21.10 | Contador con `AtomicInteger` |
 | `ejercicio2211/` | Ejercicio 22.11 | Timer con `ScheduledExecutorService` |
 | `ejercicio2212/` | Ejercicio 22.12 | Simulacion de descarga paralela |

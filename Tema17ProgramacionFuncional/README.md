@@ -119,7 +119,7 @@ opt.ifPresent(System.out::println) // accion si hay valor
 |---------|------------|
 | `Ejercicio01/` | Comparacion imperativo vs declarativo con numeros |
 | `Ejercicio02/` | `IAnimal` como interfaz funcional — lambda como implementacion |
-| `Ejercicio03/` | `Vehiculo` con `Comparator` lambda para ordenar |
+| `Ejercicio03/` | `Hilo` con `Comparator` lambda para ordenar |
 | `Ejercicio04/` | `Mensajero` — lambda como `Runnable` en hilos |
 | `Ejercicio05/` | `IOperador` — interfaz funcional de operacion matematica |
 | `Ejercicio06RefenciaMetodo/` | Las 4 formas de referencia a metodo (estatico, instancia, constructor) |
