@@ -1,5 +1,7 @@
 package src;
 
+import src.gameConstants.GameConstants;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,18 +11,17 @@ public class GamePanel extends JPanel {
     protected void paintComponent(Graphics g){
 
         super.paintComponent(g);
-
-        // fondo verde
-                g.setColor(Color.GREEN);
+        // Background
+                g.setColor(GameConstants.TABLE_BACKGROUND);
                 g.fillRect(0, 0, getWidth(), getHeight());
 
-        // Cuadricula del tablero
-        g.setColor(Color.BLACK);
-        for (int row = 0; row < 6; row++)
-            for (int col = 0; col < 10; col++)
-                g.drawRect(80 + col*80, 100 + row*90, 80, 90);
-
-
+        // Table Tiles
+        g.setColor(GameConstants.BORDER_TILE);
+        for (int row = 0; row < GameConstants.ROWS; row++)
+            for (int col = 0; col < GameConstants.COLUMNS; col++)
+                g.drawRect( GameConstants.BOARD_X+ col*GameConstants.TILE_WIDTH,
+                            GameConstants.BOARD_Y + row * GameConstants.TILE_HEIGHT,
+                            GameConstants.TILE_WIDTH, GameConstants.TILE_HEIGHT);
     }
 
 }
