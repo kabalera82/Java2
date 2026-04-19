@@ -11,13 +11,9 @@ import ejercicio02Bonana.dao.Producto;
 
 
 public class App {
-    /*
-    private static final Path RUTA = Paths.get ("data","productos.txt");
-    ponemos rutas absolutas por los problemas con los modulos este metodo sirve para proyectos.
-    */
-    private static final Path RUTA = Path.of(
-            "F:/Marcos/Programacion/Java/Java2/AcesoDatos/data/productos.txt"
-    );
+    // Ruta relativa al directorio de trabajo (raíz del proyecto)
+    // Ejecutar desde la raíz de Java2/ con: java -cp AccesoDatos ejercicio02Bonana.App
+    private static final Path RUTA = Paths.get("AccesoDatos", "data", "productos.txt");
 
     private static final List <Producto> productos = new ArrayList<>();
 
