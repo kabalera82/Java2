@@ -15,7 +15,7 @@ public class Main {
 
         Thread t1 = new Thread(new Fabricador(), "pieza");
         Thread t2 = new Thread(new Pintado(t1), "pieza fabricada");
-        Thread t3 = new Thread(new Pulidor(t2), "");
+        Thread t3 = new Thread(new Pulidor(t2), "pieza pulida");
 
         t1.start();
         t2.start();
